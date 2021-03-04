@@ -6,10 +6,48 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
 
+  <script>
+    var Links = {
+      setColor : function(color) {
+        var links = document.querySelectorAll('a');
+        var i = 0;
+        while(i<links.length) {
+          links[i].style.color = color
+          i = i+1;
+        }
+      }
+    }
+
+    var Body = {
+      setColor : function(color) {
+        document.querySelector('body').style.color = color;
+      },
+      setBackgroundColor : function(color) {
+        document.querySelector('body').style.backgroundColor = color;
+      }
+    }
+
+    function nightDayHandler(self) {
+      if(self.value === 'night') {
+        Body.setBackgroundColor('darkgray');
+        Body.setColor('white');
+        Links.setColor('powderblue');
+        self.value = 'day';
+      } else {
+        Body.setBackgroundColor('white');
+        Body.setColor('black');
+        Links.setColor('blue');
+        self.value = 'night';
+      }
+    }
+  </script>
+
 </head>
 
 <body>
   <h1><a href="index.html">보드게임</a></h1>
+
+  <input type="button" value="night" onclick="nightDayHandler(this)">
 
   <div id="grid">
     <ol>
